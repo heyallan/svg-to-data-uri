@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SVG to Data URI encoder</title>
+    <meta name="description" content="SVG to Data URI encoder">
+    <link rel="stylesheet" href="./css/reset.min.css">
+    <link rel="stylesheet" href="./css/grid.min.css">
+    <link rel="stylesheet" href="./css/properties.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script defer src="./js/copy-to-clipboard.js"></script>
+    <script defer src="./js/paste-from-clipboard.js"></script>
+    <script defer src="./js/svg-to-data-uri.js"></script>
+    <script defer src="./js/index.js"></script>
+  </head>
+  <body>
+
+    <main class="container">
+      <div class="row">
+        <div class="col-md-10">
+
+          <header>
+            <h1>SVG to Data URI encoder</h1>
+            <div class="separator"></div>
+            <ul class="list-inline" style="--bullet-type:'·';">
+              <li><a href="#why">Why</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#facts">Fun facts</a></li>
+            </ul>
+          </header>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <section>
+                <h2 class="margin-bottom-0">SVG</h2>
+                <p class="label">Input</p>
+                <div id="input" class="border-dashed" contenteditable="true" spellcheck="false"></div>
+                <p>
+                  <button type="button" data-action="encode" class="primary">Encode</button>
+                  <button type="button" data-action="example">Example</button>
+                  <button type="button" data-action="reset">Reset</button>
+                  <span class="feedback hide">Invalid input</span>
+                </p>
+              </section>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <section>
+                <h2 class="margin-bottom-0">Data URI</h2>
+                <p class="label">Output</p>
+                <div id="output" class="border-dashed" contenteditable="true" spellcheck="false"></div>
+                <p>
+                  <button type="button" data-action="copy" data-source="#output">Copy</button>
+                </p>
+              </section>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+          <br>
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <h2 class="margin-bottom-0">Markup</h2>
+              <p class="label">Example</p>
+              <div id="html" class="border-dashed" contenteditable="true" spellcheck="false"></div>
+              <p><button type="button" data-action="copy" data-source="#html">Copy</button></p>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <h2 class="margin-bottom-0">Preview</h2>
+              <p class="label">Result</p>
+              <figure class="preview">
+                <img id="preview" class="border-dashed padding-1 float-left margin-right-1" alt="Image using SVG as encoded data URI" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50'%3E%3Cpath fill='%23C0C0C9' d='M25.1,0H50v50H0V0H25.1z M45.7,45.7V4.3H4.3v41.4H45.7z'/%3E%3Cpath fill='%23C0C0C9' d='M40.6,37.5c-10.4,0-20.8,0-31.2,0c2.1-4.1,4.1-8.3,6.2-12.4c2.1,2.1,4.1,4.1,6.2,6.3 c3.2-4.2,6.3-8.4,9.4-12.6C34.4,25,37.5,31.2,40.6,37.5z'/%3E%3Ccircle fill='%23C0C0C9' cx='18.8' cy='15.6' r='3.1'/%3E%3C/svg%3E" />
+                <div class="label"><small>Inlined SVG</small></div>
+                <figcaption>An image tag using inlined SVG</figcaption>
+              </figure>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+
+          <br>
+
+          <h2 id="why">Why</h2>
+          <div class="separator"></div>
+          <p>Save a server request by inlining SVG contents right into the code. Encode SVG contents as <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs" target="_blank">data URI</a> and use it as image source. The SVG will be rendered right from the code without triggering a server request.</p>
+
+          <h2 id="about">About</h2>
+          <div class="separator"></div>
+          <p>This tool will:</p>
+          <ul>
+            <li>Encode only unsafe characters</li>
+            <li>Remove redundant white space</li>
+            <li>Remove comments</li>
+            <li>Remove XML declaration</li>
+            <li>Remove doctype declaration</li>
+            <li>Replace double quotes with single quotes</li>
+            <li>Add XML namespace if needed</li>
+          </ul>
+
+          <h2 id="facts">Fun facts</h2>
+          <div class="separator"></div>
+          <ul>
+            <li>Inlining a small SVG as data URI will save an HTTP request</li>
+            <li>Inlined files must be URI-encoded to avoid conflict with URL delimiters and protocols</li>
+            <li>Use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent</a> to encode plain-text files, use <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/btoa">base64</a> to encode binary files</li>
+            <li>SVGs are plain text XML files, JPG/PNG/GIF are binaries</li>
+            <li>Base64-encoding inflates file size by ~30%, URI-encoding can be optimized to do better</li>
+            <li>SVGs can be highly optimized, especially by hand</li>
+            <li>URI-encoded SVG gzips better than base64 because its content is more repetitive</li>
+            <li>Enable gzip compression for SVG on your server</li>
+            <li>Limit the use of inlining to small files ~1KB</li>
+            <li>You should almost never inline files bigger than 4KB</li>
+            <li>Inlining inside CSS is a render-blocking procedure</li>
+            <li>Inlined SVGs cannot be cached</li>
+            <li>Do not inline too many images, prefer SVG sprites from a cacheable external SVG file</li>
+            <li>HTTP 2 (parallel responses) will make inlining obsolete (that is if you only intended to save HTTP requests)</li>
+            <li>Inlining small files is still convenient for bundling small images in a single file</li>
+          </ul>
+
+          <div class="separator"></div>
+
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </main><!-- /.container -->
+  </body>
+</html>

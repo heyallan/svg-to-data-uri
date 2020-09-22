@@ -1,0 +1,59 @@
+:root {
+  --color-primary: mediumslateblue;
+  --button-bg-color: var(--color-secondary);
+  color: var(--color-secondary);
+  /* --font-family-heading: "Merriweather Black"; */
+  /* --font-family-body: "Roboto"; */
+  --font-size-h1: 1.5rem;
+  --font-size-h2: 1.4rem;
+  --font-size-h3: 1.3rem;
+  --font-size-h4: 1.2rem;
+  --font-size-h5: 1.1rem;
+  --font-size-h6: 1rem;
+}
+
+main {
+  padding: 2rem 0;
+}
+
+[contenteditable] {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-family: "SF Mono", Menlo, "Roboto Mono", monospace;
+  overflow: scroll;
+  height: 200px;
+}
+
+[contenteditable]:focus {
+  border-color: var(--color-primary, dodgerblue);
+  border-style: solid;
+  outline: 0;
+}
+
+.separator {
+  padding: 3px;
+  background-color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.border-dashed {
+  border: 2px dashed #d0d0d0;
+}
+
+.label {
+  color: gray;
+}
+
+.preview img {
+  max-width: 100px;
+}
+
+figcaption {
+  color: inherit;
+}
+
+button, .btn {
+  padding: calc(1rem/6) calc(1rem/2);
+  font-family: inherit;
+  font-size: smaller;
+}
