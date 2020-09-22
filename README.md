@@ -1,2 +1,3 @@
-# svg-to-data-uri
-SVG to Data URI encoder
+# SVG to data URI
+
+> SVG to Data URI encoder
