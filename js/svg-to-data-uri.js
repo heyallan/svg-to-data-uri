@@ -10,8 +10,8 @@ function svgToDataURI(svg) {
   svg = svg.replace(/<!--.{1,}-->/g, '');
   // remove unnecessary attributes
   svg = svg.replace(/version=[\"\'](.{0,}?)[\"\'](?=[\s>])/g, '');
-  svg = svg.replace(/id=[\"\'](.{0,}?)[\"\'](?=[\s>])/g, '');
-  svg = svg.replace(/class=[\"\'](.{0,}?)[\"\'](?=[\s>])/g, '');
+  // svg = svg.replace(/id=[\"\'](.{0,}?)[\"\'](?=[\s>])/g, '');
+  // svg = svg.replace(/class=[\"\'](.{0,}?)[\"\'](?=[\s>])/g, '');
   // replace nested quotes
   svg = svg.replace(/"'(.{1,})'"/g, '\'$1\'');
   // replace double quotes
